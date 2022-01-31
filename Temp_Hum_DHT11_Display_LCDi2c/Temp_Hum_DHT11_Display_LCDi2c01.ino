@@ -1,27 +1,38 @@
 /*
 
 */
-#include &lt;Servo.h&gt;
-#include &lt;LiquidCrystal_I2C.h&gt;
-LiquidCrystal_I2C lcd(0x27, 16, 2); //
-Servo myservo; // create servo object to control a servo
+#include <SimpleDHT.h>
+#include <Wire.h>
+#include <LiquidCrystal_I2C.h>
+LiquidCrystal_I2C lcd(0x27, 16, 2); // set the LCD address to 0x27 for a 16 chars and
+2 line display
+int pinDHT11 = 2;
 const int pingTrig = A0;
 const int pingEcho = A1;
 int LED_Red = 5;
 int LED_Green = 7;
+int DCMOTOR = 8;
+SimpleDHT11 dht11(pinDHT11);
 void setup() {
-myservo.attach(8); // attaches the servo on pin 9 to the servo object
+// initialize serial communication
+//Serial.begin(9600);
+Serial.begin(115200);
+// initialize sensor pins
 pinMode(pingTrig, OUTPUT);
-
 pinMode(pingEcho, INPUT);
-Serial.begin(9600);
 pinMode(LED_Red, OUTPUT);
 pinMode(LED_Green, OUTPUT);
+pinMode(DCMOTOR, OUTPUT);
+lcd.init(); // initialize the lcd
 lcd.init();
 // Print a message to the LCD.
 lcd.backlight();
 }
-void loop() {
+void loop()
+{
+// establish variables for the duration of the ping,
+// and the distance result in inches and centimeters:
+
 long duration, inches, cm;
 // The HC-SR04 is triggered by a HIGH
 //pulse of 2 or more microseconds.
@@ -35,37 +46,49 @@ digitalWrite(pingTrig, LOW);
 duration = pulseIn(pingEcho, HIGH);
 // convert the time into a distance
 inches = microsecondsToInches(duration);
+cm = microsecondsToCentimeters(duration);
 Serial.print(inches);
-Serial.print(&quot;in, &quot;);
+Serial.print("in, ");
+Serial.print(cm);
+Serial.print("cm");
 Serial.println();
-// reads the value of the potentiometer
-// (value between 0 and 1023)
-if (inches &lt; 4)
-// scale it to use it with the servo
-//(value between 0 and 180)
+if (inches <= 4)
 {
-myservo.write(180);
 digitalWrite (LED_Red, LOW);
 digitalWrite (LED_Green, HIGH);
-lcd.setCursor(0, 0);
-lcd.print(&quot; Welcome 2 :) &quot;);
-
-lcd.setCursor(0, 1);
-lcd.print(&quot;Mellsmart House&quot;);
+digitalWrite (DCMOTOR, HIGH);
 }
-
-else
-{ myservo.write(0);
+if (inches > 4)
+{
 digitalWrite (LED_Red, HIGH);
 digitalWrite (LED_Green, LOW );
-lcd.setCursor(0, 0);
-lcd.print(&quot;Door closed :(&quot;);
-lcd.setCursor(0, 1);
-lcd.print(&quot;Mellsmart House&quot;);
+digitalWrite (DCMOTOR, LOW);
 }
-delay(15); // waits for the servo to get there
+delay(1000);
+byte temperature;
+byte humidity ;
+int err = SimpleDHTErrSuccess;
+dht11.read(&temperature, &humidity, NULL);
+lcd.setCursor(0, 0);
+lcd.print("Humidity "); lcd.print((int)humidity); lcd.print("%");
+lcd.setCursor(0, 1);
+lcd.print("Temp ");
+lcd.print((int)temperature);
+lcd.print("*C ");
+//Serial.print("Sample OK: ");
+
+Serial.print((int)temperature); Serial.print("*C ");
+Serial.print((int)humidity); Serial.println("% ");
+// DHT11 sampling rate is 1HZ.
+delay(150);
 }
 long microsecondsToInches(long microseconds)
 {
 return microseconds / 74 / 2;
 }
+long microsecondsToCentimeters(long microseconds)
+{
+return microseconds / 29 / 2;
+}
+Make sure you have installed the corresponding libraries
+<SimpleDHT.h> <Wire.h> <LiquidCrystal_I2C.h>
