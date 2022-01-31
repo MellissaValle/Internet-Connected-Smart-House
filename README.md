@@ -7,6 +7,15 @@
 - Green Light welcome/Red light Door closed
 - Assembling the 3D printed house
 
+### Components
+- Arduino UNO
+- Sensor Shield
+- Fan/DC motor
+- Light/RGB LED
+- Motion detection/ Ultrasound
+- Temp & Hum/DHT11
+- Display/LCDi2c
+
 ### Original House versus the 3D printed version
 ![house](https://user-images.githubusercontent.com/74070082/151723806-65ce9357-7009-4b05-b1d2-b01c6591db0c.png)
 
@@ -25,17 +34,25 @@ avoid melting the actual door or servo. Hot glue does the trick perfectly to hav
 
 ![Door](https://user-images.githubusercontent.com/74070082/151723585-0e3d006f-37f7-495d-8d7d-75c456ea0596.png)
 
+### Display/LCDi2c
+Displaying welcome message
+
+![image](https://user-images.githubusercontent.com/74070082/151882366-750c77ee-0309-4049-9f75-6caa38ebb557.png)
 
 ### Navigating the Repository
 ```
 
 ├── images
 │         ├── ... <-------- Images used for README
-├── .gitignore  <------- Large Datasets listed here
 ├── README.md
 ├── presentation.pdf <-------- Non-Technical presentation Deck
-├── requirements.txt 
-├── environment.yml
-├── utils.py <--------- functions used to clean data
-└── notebook.ipynb <--------- Complete Analysis
+└── sketchbook <--------- Code
 ```
+
+### License
+
+This project is released under a Public Domain License.
+### Contributing
+
+To contribute to this project please contact mellissavalle https://id.arduino.cc/mellissavalle
+
