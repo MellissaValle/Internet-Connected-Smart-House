@@ -4,7 +4,7 @@ License: Public Domain
 
 = Project: Temperature & Humidity
 
-Describe your project
+![IMG_3119](https://user-images.githubusercontent.com/74070082/151883785-fa5a97cc-c507-44d1-98b3-1150ded03f24.jpg)
 
 == Step 1: Installation
 
