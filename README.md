@@ -39,6 +39,12 @@ Displaying welcome message
 
 ![image](https://user-images.githubusercontent.com/74070082/151882366-750c77ee-0309-4049-9f75-6caa38ebb557.png)
 
+### DC On/Off Motor - Motion Detection
+CD Motor + Ultrasonic Sensor 
+
+![DC_Motor_UltraSound](https://user-images.githubusercontent.com/74070082/153728754-93848544-5c6d-4b4f-8799-189202cb29b6.png)
+
+
 ### Navigating the Repository
 ```
 
