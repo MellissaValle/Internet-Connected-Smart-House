@@ -1,0 +1,50 @@
+:Author: mellissavalle
+:Email: vallemellissa@gmail.com
+:Date: 16/02/2022
+:License: Public Domain
+
+= Project: Advanced Sensor – Ultrasonic Distance Sensor
+
+Describe your project
+
+== Step 1: Installation
+2. Connect the advanced sensor to the micro-controller according to the schematic diagram. 
+3. Compile, upload and run the Ping_4Pin.ino program on the micro-controller. 
+4. Connect scope channels 1 and 2 to pins A0 and A1 respectively through jumper wires. 
+Connecting the scope probe alligator clips directly to micro-controller pins can damage the 
+micro-controller board. Set the vertical (voltage: 2V/dev) and horizontal (time: 10ms/dev) scales 
+correctly. Set the scope trigger setting to channel 1, rising edge trigger. Observe the ultrasonic 
+sensor TRIG and ECHO pulses and measure their pulse width on the scope. Take a screenshot
+of the scope display and include the shot and measurements in the report. 
+5. Study and analyze the output of the program on the serial monitor. Record the minimum and 
+maximum distance measurements and include in the report. 
+Part 2: 
+6. Modify the Ping_4Pin program to implement ON/OFF control of a Red Green Blue (RGB) 
+LED by using the distance sensor while printing the distance measurements in the Serial 
+Monitor window. The three LEDs should turn ON as follows: o Distance less than 3 inches – 
+only RED LED ON o Distance between 3 and 13 inches – only YELLOW (or BLUE) LED ON o 
+Distance greater than 13 inches – only GREEN LED ON 
+== Diagram:
+Equipment: 
+Arduino board 
+USB cable
+Ultrasonic distance sensor
+RGB LED
+Jumper wires
+Breadboard 
+
+== Load the code
+
+Upload the code contained in this sketch on to your board
+
+=== License
+This project is released under a {License} License.
+
+=== Contributing
+To contribute to this project please contact mellissavalle https://id.arduino.cc/mellissavalle
+
+
+=== Help
+This document is written in the _AsciiDoc_ format, a markup language to describe documents.
+If you need help you can search the http://www.methods.co.nz/asciidoc[AsciiDoc homepage]
+or consult the http://powerman.name/doc/asciidoc[AsciiDoc cheatsheet]
