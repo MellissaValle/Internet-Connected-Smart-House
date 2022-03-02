@@ -28,6 +28,10 @@ to be put on, with the new version they can always be relocated to different sec
 the house.
 - Easier and more convenient placing all the sensors with their wires through the walls.
 
+### Block Diagram
+
+![Block](https://user-images.githubusercontent.com/74070082/155733686-82cea129-507a-4256-b6c8-d0eee1421a33.png)
+
 #### Recommendation:
 To attach the 3D printed door to the servo motor,use hot glue instead of 3D printing filament to
 avoid melting the actual door or servo. Hot glue does the trick perfectly to have a firm attachment
